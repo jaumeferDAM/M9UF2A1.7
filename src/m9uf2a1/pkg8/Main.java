@@ -21,9 +21,10 @@ public class Main {
         Buffer buffer = new Buffer();
 
         escritura = new Thread(new Escritura());
-//        lectura = new Thread(new Lectura());
+        lectura = new Thread(new Lectura(buffer));
         
         escritura.start();
+        lectura.start();
     }
     
 

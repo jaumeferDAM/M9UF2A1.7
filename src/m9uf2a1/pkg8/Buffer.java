@@ -17,9 +17,15 @@ public class Buffer {
     int insertar = 0;
     int recoger = 0;
 
+    public String[] getLista() {
+        return lista;
+    }
+    
+    
+
     public synchronized void leer() {
 
-        while (!leido || recoger > elementos) {
+        while (!leido || recoger < (elementos-lista.length)) {
             try {
                 wait();
 
@@ -29,15 +35,16 @@ public class Buffer {
             }
         }
         leido = false;
-        System.out.println(lista[0]);
-        recoger--;
+        System.out.println(lista[recoger % lista.length]);
+        recoger++;
+        elementos--;
         leido = true;
         notifyAll();
     }
 
     public synchronized void escribir(String texto) {
 
-        while (!leido || insertar < elementos) {
+        while (!leido || insertar < (elementos + lista.length)) {
             try {
                 wait();
             } catch (InterruptedException e) {

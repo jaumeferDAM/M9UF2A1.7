@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  *
- * @author Jorge
+ * @author alumnedam
  */
 public class Escritura implements Runnable {
 

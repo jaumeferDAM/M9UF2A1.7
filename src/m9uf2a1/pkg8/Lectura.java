@@ -2,27 +2,27 @@ package m9uf2a1.pkg8;
 
 /**
  *
- * @author Jorge
+ * @author alumnedam
  */
 public class Lectura implements Runnable {
 
-        String cadena;
+    Buffer buffer;
+//    String cadena;
 //    private final int idconsumidor;
+    public String[] lista = new String[10];
 
-    public Lectura(String cadena) {
-        this.cadena = cadena;
+    public Lectura(Buffer buffer) {
+        this.buffer = buffer;
+        lista = buffer.getLista();
     }
 
-
-    
-
-    @Override
     /**
      * Implementación de la hebra
      */
+    @Override
     public void run() {
         while (Boolean.TRUE) {
-            System.out.println("Consumidor x mostra la cadena: " + cadena);
+            System.out.println("Consumidor x mostra la cadena: " + lista[0]);
         }
     }
 }
